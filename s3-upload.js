@@ -7,11 +7,12 @@ const path = require('path');
 
 const app = express();
 const s3 = new aws.S3({ apiVersion: '2006-03-01' });
+// Needs AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
 
 const upload = multer({
     storage: multerS3({
         s3,
-        bucket: 'jdc-upload-test',
+        bucket: '<your bucket name>',
         metadata: (req, file, cb) => {
             cb(null, { fieldName: file.fieldname });
         },
