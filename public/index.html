@@ -11,7 +11,7 @@
     <h1>File Upload Test</h1>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="avatar" multiple />
+        <input type="file" name="appImage" multiple />
         <button>Submit</button>
     </form>
 
@@ -22,7 +22,8 @@
             const response = await fetch('http://localhost:3001/images').then(response => response.json());
             const imagesElem = document.querySelector('.images');
             imagesElem.innerHTML = '';
-            response.images.forEach(image => {
+            console.log(response);
+            response.forEach(image => {
                 const img = document.createElement('img');
                 img.src = image.filePath;
                 img.height = '200';
